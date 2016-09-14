@@ -2,3 +2,6 @@
 org.h2.jdbc.JdbcSQLException: Data conversion error converting "theNinjew" [22018-191]
 2016-09-14 12:29:31 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLException: Data conversion error converting "theNinjew" [22018-191]
+2016-09-14 16:33:22 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE *[*] FROM MESSAGES "; expected "identifier"; SQL statement:
+DELETE * FROM messages [42001-191]
