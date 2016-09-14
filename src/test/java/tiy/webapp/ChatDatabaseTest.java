@@ -71,4 +71,29 @@ public class ChatDatabaseTest {
 		testDatabase.deleteMessage(conn, message);
 	}
 
+	@Test
+	public void deleteHistory() throws Exception {
+		Connection conn = DriverManager.getConnection(testDatabase.DB_URL);
+		String message = "This is a message";
+		testDatabase.postMessage(conn, message);
+		message = "Another message!";
+		testDatabase.postMessage(conn, message);
+		message = "Something else!";
+		testDatabase.postMessage(conn, message);
+
+		ArrayList<String> testArray = testDatabase.chatHistory(conn);
+
+		for (String item : testArray) {
+			System.out.println(item);
+		}
+
+		assertEquals(3, testArray.size());
+
+		testDatabase.deleteHistory(conn);
+
+		testArray = testDatabase.chatHistory(conn);
+
+		assertEquals(0, testArray.size());
+	}
+
 }

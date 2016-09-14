@@ -72,4 +72,9 @@ public class ChatDatabase {
 		return messageHistory;
 	}
 
+	public void deleteHistory(Connection conn) throws SQLException {
+		PreparedStatement stmt = conn.prepareStatement("DELETE FROM messages");
+		stmt.execute();
+	}
+
 }
