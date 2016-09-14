@@ -34,9 +34,7 @@ public class ChatSpringAppController {
     @RequestMapping(path = "/chat", method = RequestMethod.GET)
     public String input(HttpSession session, Model model, String message) {
         if (message != null) {
-        String serverResponse = myClient.sendMessage((String)session.getAttribute("username"), message);
-//            System.out.println("Username is: " + session.getAttribute("username"));
-//            String serverResponse = "test 1\ntest 2\ntest 3\ntest4";
+            String serverResponse = myClient.sendMessage((String)session.getAttribute("username"), message);
             String[] serverMessages = serverResponse.split("\n");
             model.addAttribute("serverMessages", serverMessages);
         }
@@ -45,5 +43,14 @@ public class ChatSpringAppController {
     }
 
 
+    @RequestMapping(path = "/reset", method = RequestMethod.GET)
+    public String reset(HttpSession session, Model model, String message) {
+
+        String serverResponse = myClient.refresh();
+        String[] serverMessages = serverResponse.split("\n");
+        model.addAttribute("serverMessages", serverMessages);
+
+        return "input";
+    }
 
 }
